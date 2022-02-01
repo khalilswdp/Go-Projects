@@ -1,27 +1,30 @@
 package main
 
 import (
+	"bufio"
 	"encoding/json"
 	"fmt"
+	"os"
 )
 
-var name string
-var address string
-
 func main() {
+	fmt.Print("Enter a name: ")
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	name := scanner.Text()
 
-	m := make(map[string]string)
+	fmt.Print("Enter an address: ")
+	scanner.Scan()
+	address := scanner.Text()
 
-	fmt.Print("Enter a name= ")
-	fmt.Scanln(&name)
+	myMap := map[string]string{
+		"name":    name,
+		"address": address,
+	}
 
-	fmt.Print("Enter an address= ")
-	fmt.Scanln(&address)
+	barr, err := json.Marshal(myMap)
+	if err == nil {
+		fmt.Println(string(barr))
+	}
 
-	m["name"] = name
-	m["address"] = address
-
-	output, _ := json.Marshal(m)
-
-	fmt.Printf(string(output))
 }

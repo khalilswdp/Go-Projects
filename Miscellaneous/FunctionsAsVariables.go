@@ -17,4 +17,6 @@ func main() {
 	fmt.Println(funcVar(1))
 
 	fmt.Println(applyIt(incFn, 2))
+	fmt.Println(applyIt(func(x int) int { return x + 3 }, 2))
+
 }

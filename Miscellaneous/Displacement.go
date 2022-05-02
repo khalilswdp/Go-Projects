@@ -16,7 +16,7 @@ func main() {
 
 }
 
-func GenDisplaceFn(acc float64, vel float64, dis float64) func(float64) float64 {
+func GenDisplaceFn(acc, vel, dis float64) func(float64) float64 {
 	return func(time float64) float64 {
 		return (1/2)*acc*math.Pow(time, 2) + vel*time + dis
 	}
